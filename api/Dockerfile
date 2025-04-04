@@ -118,7 +118,7 @@ RUN php bin/console cache:clear
 # Expose port
 EXPOSE 9393
 
-RUN cd swetest/src && make clean && make && chmod 777 swetest/src && chmod +x swetest/src/swetest
+RUN cd swetest/src && make clean && make && chmod 777 . && chmod +x swetest
 
 # Start Nginx and PHP-FPM with logging
 CMD service php7.4-fpm start && \
