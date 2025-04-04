@@ -8,8 +8,6 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Set working directory
 WORKDIR /var/www/api
 
-RUN cd swetest/src && make clean && make && chmod 777 swetest/src && chmod +x swetest/src/swetest
-
 # Install system dependencies
 RUN apt-get update -y && \
     apt-get install -y \
@@ -119,6 +117,8 @@ RUN php bin/console cache:clear
 
 # Expose port
 EXPOSE 9393
+
+RUN cd swetest/src && make clean && make && chmod 777 swetest/src && chmod +x swetest/src/swetest
 
 # Start Nginx and PHP-FPM with logging
 CMD service php7.4-fpm start && \
